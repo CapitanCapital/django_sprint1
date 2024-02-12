@@ -44,16 +44,15 @@ posts = [
 ]
 
 
-# Create your views here.
 def index(request):
     template = 'blog/index.html'
     context = {'posts': posts}
     return render(request, template, context)
 
 
-def post_detail(request, id):
+def post_detail(request, post):
     template = 'blog/detail.html'
-    context = {'post': posts[id]}
+    context = {'post': posts[post]}
     return render(request, template, context)
 
 
