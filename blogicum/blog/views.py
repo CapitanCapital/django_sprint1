@@ -54,7 +54,7 @@ def index(request):
 def post_detail(request, post):
     try:
         posts[post]
-    except:
+    except KeyError:
         raise Http404("Post not found")
     template = 'blog/detail.html'
     context = {'post': posts[post]}
