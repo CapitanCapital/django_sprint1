@@ -45,7 +45,7 @@ posts = [
     },
 ]
 
-post_dict = {post['id']: post for post in posts}
+posts_by_id = {post['id']: post for post in posts}
 
 
 def index(request):
@@ -56,7 +56,7 @@ def index(request):
 
 def post_detail(request, post):
     try:
-        post_dict[post]
+        posts_by_id[post]
     except KeyError:
         raise Http404("Post not found")
     template = 'blog/detail.html'
