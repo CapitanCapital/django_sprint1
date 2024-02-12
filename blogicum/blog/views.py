@@ -1,5 +1,6 @@
-from django.shortcuts import render
 from django.http import Http404
+from django.shortcuts import render
+
 
 posts = [
     {
@@ -44,6 +45,8 @@ posts = [
     },
 ]
 
+post_dict = {post['id']: post for post in posts}
+
 
 def index(request):
     template = 'blog/index.html'
@@ -53,7 +56,7 @@ def index(request):
 
 def post_detail(request, post):
     try:
-        posts[post]
+        post_dict[post]
     except KeyError:
         raise Http404("Post not found")
     template = 'blog/detail.html'
